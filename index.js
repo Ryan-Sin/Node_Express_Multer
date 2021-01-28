@@ -9,6 +9,7 @@ const app = express()
  */
 const multer  = require('multer')
 
+app.use(cors())// Test를 하기 위해서 세팅 "실제 서버에 배포할 때는 아이피를 설정 해야된다."
 
 //multer 미들웨어 파일 제한 값 (Doc 공격으로부터 서버를 보호하는데 도움이 된다.)
 const limits = {
@@ -176,8 +177,6 @@ app.post('/fields/upload', fileFields, (req, res, next) => {
     res.json({ok: true, data: "Fields Upload Ok"})
 
 })
-
-app.use(cors())// Test를 하기 위해서 세팅 "실제 서버에 배포할 때는 아이피를 설정 해야된다."
 
 //Error Handler
 app.use((err, req, res, next) => {
